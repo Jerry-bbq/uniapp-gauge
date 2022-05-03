@@ -4,6 +4,8 @@
 
 使用`canvas`自定义仪表盘，通过文件引入类`Gauge`,实例化传参来运行
 
+![image](./static/image.png)
+
 ## 功能
 
 - 刻度线显示
