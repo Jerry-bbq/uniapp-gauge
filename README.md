@@ -10,8 +10,8 @@
 
 - [x] 刻度线显示
 - [x] 当前值显示
-- [x] 任意起始终止角度
-- [x] 即可当做仪表盘，也可以当做环形进度条使用
+- [x] 固定起始终止角度
+- [x] 既可当做仪表盘，也可以当做环形进度条使用
 - [x] 渐变色
 
 没有做太多的扩展性设计，可将组件下载下来自行设置以符合不同业务的需求
@@ -38,8 +38,10 @@
 ```vue
 <template>
 	<view class="gauge-container">
-		<canvas style="width: 200px; height: 200px;" canvas-id="canvas"></canvas>
-		<canvas style="width: 200px; height: 200px;" canvas-id="canvas2"></canvas>
+		<view class="title">温度仪表盘</view>
+		<canvas class="canvas" canvas-id="canvas"></canvas>
+		<view class="title">进度条</view>
+		<canvas class="canvas" canvas-id="canvas2"></canvas>
 	</view>
 </template>
 
@@ -60,18 +62,35 @@
 				max: 30,
 				value: 20.5,
 				unit: '℃',
-				showTick: true
+				showTick: true,
+				// trackColor: '#000'
 			})
 
 			var ctx2 = uni.createCanvasContext('canvas2')
 			new Gauge(ctx2, {
-				width: 200,
-				min: 0,
-				max: 100,
-				value: 60,
-				unit: '%'
+				value: 66.5,
+				progressColor: '#3a98fd',
+				valueColor: '#f58220'
 			})
 		}
 	}
 </script>
+
+<style>
+.gauge-container {
+	padding: 20rpx 40rpx;
+	text-align: left;
+}
+.title {
+	margin-bottom: 20rpx;
+	color: #000;
+	font-size: 32rpx;
+	font-weight: 500;
+}
+.canvas {
+	width: 200px; 
+	height: 200px;
+	margin: 40rpx auto;
+}
+</style>
 ```
