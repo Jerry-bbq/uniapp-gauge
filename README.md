@@ -8,13 +8,28 @@
 
 ## 功能
 
-- 刻度线显示
-- 当前值显示
-- 任意起始终止角度
-- 即可当做仪表盘，也可以当做环形进度条使用
-- 渐变色
+- [x] 刻度线显示
+- [x] 当前值显示
+- [x] 任意起始终止角度
+- [x] 即可当做仪表盘，也可以当做环形进度条使用
+- [x] 渐变色
 
 没有做太多的扩展性设计，可将组件下载下来自行设置以符合不同业务的需求
+
+## 参数
+
+| 参数 | 说明 | 默认值 | 是否必填
+|--|--|--|--|
+| ctx | 当前对象 | | 必填
+| value | 当前显示值（未做浮点数据处理） | `0` | 选填
+| width | 宽度 | `200` | 选填
+| min | 最小值 | `0` | 选填
+| max | 最大值 | `100` | 选填
+| unit | 单位 | `%` | 选填
+| showTick | 是否暂时刻度线 | `false` | 选填
+| progressColor | 进度条颜色 | `#FD7347` | 选填
+| trackColor | 滑动轨迹颜色 | `#F1F1F1` | 选填
+| valueColor | 当前值颜色 | `#000` | 选填
 
 ## 使用案例
 
@@ -23,8 +38,8 @@
 ```vue
 <template>
 	<view class="gauge-container">
-		<canvas style="width: 200px; height: 200px;" canvas-id="canvas" id="canvas"></canvas>
-		<canvas style="width: 200px; height: 200px;" canvas-id="canvas2" id="canvas2"></canvas>
+		<canvas style="width: 200px; height: 200px;" canvas-id="canvas"></canvas>
+		<canvas style="width: 200px; height: 200px;" canvas-id="canvas2"></canvas>
 	</view>
 </template>
 
