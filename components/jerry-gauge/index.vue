@@ -1,8 +1,8 @@
 <template>
 	<view class="gauge-container">
-		<view class="title">温度仪表盘</view>
+		<view class="title">温度类</view>
 		<canvas class="canvas" canvas-id="canvas"></canvas>
-		<view class="title">进度条</view>
+		<view class="title">进度类</view>
 		<canvas class="canvas" canvas-id="canvas2"></canvas>
 	</view>
 </template>
@@ -17,8 +17,8 @@
 			};
 		},
 		mounted() {
-			var ctx = uni.createCanvasContext('canvas')
-			new Gauge(ctx, {
+			new Gauge({
+				canvasId: 'canvas',
 				width: 200,
 				min: 16,
 				max: 30,
@@ -27,12 +27,12 @@
 				showTick: true,
 				// trackColor: '#000'
 			})
-
-			var ctx2 = uni.createCanvasContext('canvas2')
-			new Gauge(ctx2, {
-				value: 66.5,
+			new Gauge({
+				canvasId: 'canvas2',
+				value: 20,
+				lineWidth: 20,
 				progressColor: '#3a98fd',
-				valueColor: '#f58220'
+				valueColor: '#000'
 			})
 		}
 	}
