@@ -77,7 +77,7 @@ class Gauge {
 		const valueRad = this.getValueRad()
 		this.ctx.beginPath()
 		this.ctx.lineWidth = this.lineWidth
-		this.ctx.strokeStyle = this.progressColor
+		this.ctx.strokeStyle = typeof this.progressColor === 'string' ? this.progressColor : this.getGradient(this.progressColor)
 		// this.ctx.lineCap = 'round' // 会导致进度条加长
 		this.ctx.lineJoin = 'round'
 		// 终点角度是动态的
@@ -147,14 +147,13 @@ class Gauge {
 		requestAnimationFrame(update)
 	}
 	// 渐变
-	// getGradient(colorList) {
-	// 	// 创建渐变对象
-	// 	let grd = this.ctx.createLinearGradient(0, 0, this.trackRadius, 0)
-	// 	Object.keys(colorList).forEach(color => {
-	// 		grd.addColorStop(color, colorList[color])
-	// 	})
-	// 	return grd
-	// }
+	getGradient(colorList) {
+		let grd = this.ctx.createLinearGradient(0, 0, this.trackRadius, 0)
+		colorList.forEach((color, index) => {
+			grd.addColorStop(index / (colorList.length - 1), color)
+		})
+		return grd
+	}
 }
 
 
